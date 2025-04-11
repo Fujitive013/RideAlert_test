@@ -1,0 +1,11 @@
+# Ignore local environment files
+.env
+.env*.local
+
+# Ignore Docker files
+Dockerfile
+docker-composer.yml
+.dockerignore
+
+# Ignore node_modules
+node_modules/
