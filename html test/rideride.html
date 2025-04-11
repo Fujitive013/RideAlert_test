@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Location Updates</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Real-Time Location Updates</h1>
+    <div id="updates">
+        <p>Waiting for location updates...</p>
+    </div>
+
+    <script>
+        // Connect to the WebSocket server
+        const socket = io('http://localhost:3000');
+
+        // Listen for location updates
+        socket.on('locationUpdate', (data) => {
+            console.log('Real-time location update:', data);
+
+            // Display the location update on the page
+            const updatesDiv = document.getElementById('updates');
+            updatesDiv.innerHTML = `<p>Latitude: ${data.latitude}, Longitude: ${data.longitude}</p>`;
+        });
+    </script>
+</body>
+</html>
